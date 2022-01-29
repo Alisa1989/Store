@@ -1,9 +1,9 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
 import React, {useReducer} from 'react';
 import {initialState, productsReducer} from './state/reducers/productsReducer'
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/pages/landing/LandingPage';
 
 
 function App() {
