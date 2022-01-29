@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
-import { getProducts } from "../state/actions/productsActions";
+import { getProducts } from "../../../state/actions/productsActions";
 import { connect } from "react-redux";
+import ProductCard from "../../common/ProductCard"
 
 const LandingPage = (props) => {
 
@@ -14,7 +15,7 @@ const LandingPage = (props) => {
     return(
         <>
         {props.products.map((item) => (
-            <p key={item.id}>{item.title}</p>
+            <ProductCard key={item.id} item={item}/>
         ))}
         </>
     )
