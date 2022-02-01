@@ -2,14 +2,13 @@ import React from "react";
 import { useEffect } from "react";
 import { getProducts } from "../../../state/actions/productsActions";
 import { connect } from "react-redux";
-// import ProductCard from "../../common/ProductCard";
 import ProductList from './ProductList'
 
 const LandingPage = (props) => {
   useEffect(() => {
     props.getProducts();
   }, [getProducts]);
-
+  console.log("props", props)
   console.log("fetching?", props.isFetching);
   console.log("products", props.products);
   return (
@@ -19,15 +18,13 @@ const LandingPage = (props) => {
   );
 };
 
-// {props.products.map((item) => (
-//   <ProductCard key={item.id} item={item} />
-// ))}
 const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
     products: state.products,
   };
 };
+
 const mapDispatchToProps = {
   getProducts,
 };
