@@ -22,11 +22,11 @@ export const productsReducer = (state=initialState, action) => {
         case GET_PRODUCTS_SUCCESS:
             return {...state, 
             isFetching: false,
-            products: action.payload};
+            products: action.payload || []};
         case GET_PRODUCTS_FAILURE:
             return {...state, 
             isFetching: false,
-            error: action.payload};
+            error: action.payload || []};
         default:
             return state;
     }
