@@ -14,7 +14,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function ProductList(props) {
-  console.log("props in product list", props);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 8, md: 18 }}>

@@ -5,6 +5,6 @@ export const addProduct = item => {
     return{type: ADD_TO_CART, payload: item}
 };
 export const removeProduct = item => {
-    return{type: ADD_TO_CART, payload: item}
+    return{type: SUBTRACT_FROM_CART, payload: item}
 };
 
