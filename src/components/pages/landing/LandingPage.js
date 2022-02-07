@@ -3,14 +3,17 @@ import { useEffect } from "react";
 import { getProducts } from "../../../state/actions/productsActions";
 import { connect } from "react-redux";
 import ProductList from './ProductList'
+import CartList from "../cart/CartList";
 
 const LandingPage = (props) => {
   useEffect(() => {
     props.getProducts();
   }, [getProducts]);
-  console.log("props", props)
+  // console.log("props", props)
+  console.log("stores", props.stores)
+  // console.log("cart", props.cart)
   console.log("fetching?", props.isFetching);
-  console.log("products", props.products);
+  // console.log("listings", props.listings);
   return (
     <>
         <ProductList />
@@ -20,8 +23,10 @@ const LandingPage = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.isFetching,
-    products: state.products,
+    stores: state,
+    isFetching: state.products.isFetching,
+    listings: state.products,
+    cart: state.cart
   };
 };
 

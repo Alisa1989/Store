@@ -6,29 +6,28 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-function ProductCard({item}) {
-  console.log("props from card", item)
+function ProductCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image={item.image}
+          image={props.item.image}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {item.title}
+            {props.item.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item.description}
+            {props.item.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
+        <Button onClick= {()=> props.button(props.item)}size="small" color="primary">
+          {props.buttonName}
         </Button>
       </CardActions>
     </Card>

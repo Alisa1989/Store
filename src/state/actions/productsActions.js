@@ -11,7 +11,7 @@ export const getProducts = () => (dispatch) => {
         .get ('https://fakestoreapi.com/products')
         .then((response)=> {
             dispatch({ type: GET_PRODUCTS_SUCCESS, payload: response.data});
-            console.log("API response", response.data);
+            // console.log("API response", response.data);
         })
         .catch((error) => {
             dispatch({type: GET_PRODUCTS_FAILURE, payload: `${error.response.message} code: ${error.response.code}`});

@@ -5,6 +5,8 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { connect } from "react-redux";
 import ProductCard from "../../common/ProductCard"
+import {addProduct} from '../../../state/actions/cartActions'
+
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -14,14 +16,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function ProductList(props) {
-  console.log("props in product list", props);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 8, md: 18 }}>
         {props.products.products.map((_, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
             <Item>
-                <ProductCard item = {_}/>
+                <ProductCard item = {_} key={_.id} button={props.addProduct} buttonName="add to cart"/>
             </Item>
           </Grid>
         ))}
@@ -38,4 +39,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(ProductList);
+const mapDispatchToProps = {
+  addProduct
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
