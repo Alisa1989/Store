@@ -2,14 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ProductCard from "../../common/ProductCard";
+import {removeProduct} from '../../../state/actions/cartActions'
 
 const CartList = (props) => {
     console.log("CartList", props.cart.cart)
     return (
         <div>
             <h3>Cart List</h3>
-            {props.cart.cart.map((item) => (
-                <ProductCard item={item} />
+            <p>
+                Total Price: {props.cart.cart.total}
+            </p>
+            {props.cart.cart.items.map((item) => (
+                <ProductCard item={item} key={item.id} button={props.removeProduct} buttonName="delete"/>
             ))}
         </div>
     )
@@ -20,5 +24,10 @@ const mapStateToProps = (state) => {
       cart: state.cart
     };
   };
+
+const mapDispatchToProps = {
+removeProduct
+};
   
-export default connect(mapStateToProps, null)(CartList);
+  
+export default connect(mapStateToProps, mapDispatchToProps)(CartList);
