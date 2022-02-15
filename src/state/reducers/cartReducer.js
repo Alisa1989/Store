@@ -3,18 +3,25 @@ import { ADD_TO_CART, SUBTRACT_FROM_CART } from "../actions/cartActions";
 export const initialState = {
   cart: {
     total: 0,
-    items: [
-      {
-        id: 99,
-        title: "Something in the cart",
-        price: 100,
-        category: "...",
-        description: "...",
-        image: "...",
-      },
-    ],
+    items: [],
   },
 };
+
+//Solves an issue of decimal places when adding and subtracting items to the cart
+const roundTwoDecimalPlaces =(number) => {
+  const rounded = Math.round(number * 1000) / 1000;
+  return rounded
+}
+
+//Solves an issue when there are multiple items with the same id and you delete one of them
+const removeOneItem = (items, payloadId) => {
+
+  const index = items.findIndex(function(element){
+    return element.id === payloadId;
+  });
+  const newArray = items.slice(0, index).concat(items.slice(index+1));
+  return newArray;
+}
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,7 +32,7 @@ export const cartReducer = (state = initialState, action) => {
         cart: {
           ...state.cart,
           items: [...state.cart.items, action.payload],
-          total: state.cart.total + action.payload.price,
+          total: roundTwoDecimalPlaces(state.cart.total + action.payload.price),
         },
       };
     case SUBTRACT_FROM_CART:
@@ -34,8 +41,8 @@ export const cartReducer = (state = initialState, action) => {
         ...state,
         cart: {
           ...state.cart,
-          items: state.cart.items.filter(item => item.id !== action.payload.id),
-          total: state.cart.total - action.payload.price,
+          items: removeOneItem(state.cart.items, action.payload.id),
+          total: roundTwoDecimalPlaces(state.cart.total - action.payload.price),
         },
       };
     default:
