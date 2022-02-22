@@ -1,4 +1,4 @@
-import { GET_PRODUCTS_START, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAILURE} from "../actions/productsActions";
+import { GET_PRODUCTS_START, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAILURE, FILTER_PRODUCTS} from "../actions/productsActions";
 
 export const initialState ={
     isFetching: false,
@@ -12,6 +12,20 @@ export const initialState ={
       }],
       error: ""
     }
+
+
+const filterItems = (products, keyword) => {
+    console.log("products", products, "keyword", keyword)
+    if (keyword !== ''){
+        const results = products.filter((product) => {
+            return product.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
+        });
+        return results;
+    }
+    return products;
+};
+
+
 
 export const productsReducer = (state=initialState, action) => {
     switch(action.type) {
@@ -27,6 +41,10 @@ export const productsReducer = (state=initialState, action) => {
             return {...state, 
             isFetching: false,
             error: action.payload || []};
+        case FILTER_PRODUCTS:
+            console.log("filter products in reducer", state.products)
+            return {...state,
+            products: filterItems(state.products, action.payload)}
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-import '../../styles/Header.css';
+import "../../styles/Header.css";
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -14,6 +14,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { filterProducts } from "../../state/actions/productsActions";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -76,6 +77,10 @@ function Header(props) {
     }
   };
 
+  const filterFunction = (event) => {
+    props.filterProducts(event.target.value);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -116,9 +121,9 @@ function Header(props) {
               {props.cart.cart.items.length}
             </Typography>
           </Link>
-          <Search>
+          <Search  onChange={filterFunction} >
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon/>
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
@@ -134,7 +139,13 @@ function Header(props) {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
+    products: state.products,
   };
 };
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = {
+  filterProducts
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
