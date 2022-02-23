@@ -6,7 +6,6 @@ export const GET_PRODUCTS_FAILURE = 'GET_PRODUCTS_FAILURE';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS'
 
 export const getProducts = () => (dispatch) => {
-    console.log("getting Products");
     dispatch({type: GET_PRODUCTS_START});
     axios
         .get ('https://fakestoreapi.com/products')

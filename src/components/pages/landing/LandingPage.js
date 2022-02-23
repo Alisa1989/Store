@@ -9,11 +9,7 @@ const LandingPage = (props) => {
   useEffect(() => {
     props.getProducts();
   }, [getProducts]);
-  // console.log("props", props)
-  console.log("stores", props.stores)
-  // console.log("cart", props.cart)
-  console.log("fetching?", props.isFetching);
-  // console.log("listings", props.listings);
+  
   return (
     <>
         <ProductList />

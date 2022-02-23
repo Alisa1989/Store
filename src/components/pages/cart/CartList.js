@@ -5,7 +5,6 @@ import ProductCard from "../../common/ProductCard";
 import {removeProduct} from '../../../state/actions/cartActions'
 
 const CartList = (props) => {
-    console.log("CartList", props.cart.cart)
     return (
         <div>
             <h3>Cart List</h3>

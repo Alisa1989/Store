@@ -62,7 +62,6 @@ function Header(props) {
   const [cartIcon, setCartIcon] = useState(false);
 
   useEffect(() => {
-    console.log("cartIcon", cartIcon);
     setCartIcon(true);
     setTimeout(() => {
       setCartIcon(false);

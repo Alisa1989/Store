@@ -26,7 +26,6 @@ const removeOneItem = (items, payloadId) => {
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      console.log("add to cart in reducer", state.cart.total);
       return {
         ...state,
         cart: {
@@ -36,7 +35,6 @@ export const cartReducer = (state = initialState, action) => {
         },
       };
     case SUBTRACT_FROM_CART:
-      console.log("removed frpm reducer", state.cart.total);
       return {
         ...state,
         cart: {
