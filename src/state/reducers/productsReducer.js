@@ -2,6 +2,7 @@ import { GET_PRODUCTS_START, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAILURE, FILTER_
 
 export const initialState ={
     isFetching: false,
+    filteredItems: [],
     products:[{
         id:1,
         title:'...',
@@ -15,7 +16,6 @@ export const initialState ={
 
 
 const filterItems = (products, keyword) => {
-    console.log("products", products, "keyword", keyword)
     if (keyword !== ''){
         const results = products.filter((product) => {
             return product.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
@@ -30,7 +30,6 @@ const filterItems = (products, keyword) => {
 export const productsReducer = (state=initialState, action) => {
     switch(action.type) {
         case GET_PRODUCTS_START:
-            console.log("getproducts in products reducer")
             return {...state, 
             isFetching: true};
         case GET_PRODUCTS_SUCCESS:
@@ -42,9 +41,8 @@ export const productsReducer = (state=initialState, action) => {
             isFetching: false,
             error: action.payload || []};
         case FILTER_PRODUCTS:
-            console.log("filter products in reducer", state.products)
             return {...state,
-            products: filterItems(state.products, action.payload)}
+            filteredItems: filterItems(state.products, action.payload)}
         default:
             return state;
     }
