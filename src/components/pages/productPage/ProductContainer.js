@@ -9,7 +9,6 @@ const ProductContainer = (props) => {
 
     return (
         <>
-        ProductContainer
         <ProductInformation item={selectedProduct}/>
         </>
     )
