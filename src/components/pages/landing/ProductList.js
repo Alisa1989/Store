@@ -28,7 +28,6 @@ function ProductList(props) {
           : props.products.products
         ).map((_, index) => (
           <Grid item xs={2} sm={4} md={4} key={index}>
-            <Link to={`/${_.id}`}>
               <Item>
                 <ProductCard
                   item={_}
@@ -37,7 +36,6 @@ function ProductList(props) {
                   buttonName="add to cart"
                 />
               </Item>
-            </Link>
           </Grid>
         ))}
       </Grid>
