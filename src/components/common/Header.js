@@ -99,7 +99,7 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Store64
+            <Link to={`/`}>Store64</Link>
           </Typography>
           <Link className="link-to-cart" to="/cart">
             <IconButton
@@ -120,15 +120,17 @@ function Header(props) {
               {props.cart.cart.items.length}
             </Typography>
           </Link>
-          <Search  onChange={filterFunction} >
-            <SearchIconWrapper>
-              <SearchIcon/>
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <Link to={`/`}>
+            <Search onChange={filterFunction}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
@@ -143,8 +145,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  filterProducts
+  filterProducts,
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
