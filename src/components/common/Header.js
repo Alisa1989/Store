@@ -120,15 +120,17 @@ function Header(props) {
               {props.cart.cart.items.length}
             </Typography>
           </Link>
-          <Search  onChange={filterFunction} >
-            <SearchIconWrapper>
-              <SearchIcon/>
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <Link to={`/`}>
+            <Search onChange={filterFunction}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
@@ -143,8 +145,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  filterProducts
+  filterProducts,
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
