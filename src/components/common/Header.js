@@ -99,7 +99,7 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Store64
+            <Link to={`/`}>Store64</Link>
           </Typography>
           <Link className="link-to-cart" to="/cart">
             <IconButton
