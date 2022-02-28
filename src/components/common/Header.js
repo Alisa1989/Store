@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterProducts } from "../../state/actions/productsActions";
+import MenuListComposition from "./Menu";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -91,7 +92,9 @@ function Header(props) {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MenuIcon>
+              <MenuListComposition/>
+            </MenuIcon>
           </IconButton>
           <Typography
             variant="h6"
