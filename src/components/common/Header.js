@@ -105,6 +105,7 @@ function Header(props) {
             <Link to={`/`}>Store64</Link>
           </Typography>
           <Link className="link-to-cart" to="/cart">
+            Go to Cart
             <IconButton
               size="large"
               edge="start"
