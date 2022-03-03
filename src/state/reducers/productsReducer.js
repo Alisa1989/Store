@@ -3,14 +3,7 @@ import { GET_PRODUCTS_START, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAILURE, FILTER_
 export const initialState ={
     isFetching: false,
     filteredItems: [],
-    products:[{
-        id:1,
-        title:'...',
-        price:'...',
-        category:'...',
-        description:'...',
-        image:'...'
-      }],
+    products:[],
       error: ""
     }
 
