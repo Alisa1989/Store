@@ -16,6 +16,16 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function ProductList(props) {
+  if (props.products.isFetching) 
+  {
+    return "Loading..."
+  };
+
+  if (props.products.error) 
+  {
+    return "Oops... Something went wrong."
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
