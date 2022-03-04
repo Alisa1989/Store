@@ -1,3 +1,6 @@
+@import "base/base";
+@import "components/header";
+
 $color-primary: #1976d2;
 $color-primary-light: #42a5f5;
 $color-primary-dark: #1565c0;
@@ -16,10 +19,3 @@ body {
       monospace;
   } 
   
-.link-to-cart {
-    display: flex;
-    flex-direction: row;
-    text-decoration: none;
-    color: white;
-    align-items: center;
-}
