@@ -9,20 +9,20 @@ import { Link } from "react-router-dom";
 
 function ProductCard(props) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <Link to={`/${props.item.id}`}>
+    <Card class="product-card" sx={{ maxWidth: 345 }}>
+      <Link to={`/${props.item.id}`} style={{textDecoration: "none"}}>
         <CardActionArea>
           <CardMedia
             component="img"
             height="140"
             image={props.item.image}
-            alt="green iguana"
+            alt={props.item.title}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" style={{color:"black"}}>
               {props.item.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" style={{color:"black"}} sx={{height: 200}} >
               {props.item.description}
             </Typography>
           </CardContent>

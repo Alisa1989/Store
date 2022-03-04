@@ -1,4 +1,3 @@
-import "../../styles/Header.css";
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -102,9 +101,9 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link to={`/`}>Store64</Link>
+            <Link className="header-links" to={`/`}>Store64</Link>
           </Typography>
-          <Link className="link-to-cart" to="/cart">
+          <Link className="header-links link-to-cart" to="/cart">
             Go to Cart
             <IconButton
               size="large"
@@ -124,7 +123,7 @@ function Header(props) {
               {props.cart.cart.items.length}
             </Typography>
           </Link>
-          <Link to={`/`}>
+          <Link className="header-links" to={`/`}>
             <Search onChange={filterFunction}>
               <SearchIconWrapper>
                 <SearchIcon />
