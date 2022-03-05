@@ -13,11 +13,8 @@ function ProductCard(props) {
   const maxLength = (text, length) => {
     if (text.length > length) {
       text = text.substring(0,length-1);
-      console.log("text before", text);
       const lastSpace = text.lastIndexOf(" ");
       text = text.substring(0,lastSpace) + "...";
-      console.log("text after", text);
-
     }
     return text;
   }
@@ -30,14 +27,15 @@ function ProductCard(props) {
             height="140"
             image={props.item.image}
             alt={props.item.title}
+            sx={{backgroundSize: "contain", height: 200}}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div" style={{color:"black"}}>
-              {maxLength(props.item.title, 50)}
+            <Typography gutterBottom variant="h5" component="div" style={{color:"black"}} sx={{height: 100}} >
+              {maxLength(props.item.title, 40)}
             </Typography>
-            {/* <Typography variant="body2" color="text.secondary" style={{color:"black"}} sx={{height: 200}} >
-              {props.item.description}
-            </Typography> */}
+            <Typography variant="body2" color="text.secondary" style={{color:"black"}} md={{height: 10}} sx={{fontWeight: 'bold', fontSize: 20}}>
+              ${props.item.price}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Link>

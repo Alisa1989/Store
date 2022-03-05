@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { getProducts } from "../../../state/actions/productsActions";
 import { connect } from "react-redux";
 import ProductList from './ProductList'
-import CartList from "../cart/CartList";
 
 const LandingPage = (props) => {
   useEffect(() => {
@@ -11,9 +10,9 @@ const LandingPage = (props) => {
   }, [getProducts]);
   
   return (
-    <>
+    <section className='landing-page'>
         <ProductList />
-    </>
+    </section>
   );
 };
 

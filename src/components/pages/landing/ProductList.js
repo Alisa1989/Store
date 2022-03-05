@@ -27,7 +27,7 @@ function ProductList(props) {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className='product-grid'>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
