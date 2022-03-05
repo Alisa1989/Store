@@ -1,5 +1,8 @@
 @import "base/base";
-@import "components/header";
+@import "layout/header";
+@import "components/productCard";
+@import "pages/landing";
+@import "pages/productPage";
 
 $color-primary: #1976d2;
 $color-primary-light: #42a5f5;

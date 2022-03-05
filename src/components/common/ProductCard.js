@@ -8,6 +8,16 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function ProductCard(props) {
+  //reduces length of title so they can be consistent
+  //the string is cut off afte the last word within the lenght limit
+  const maxLength = (text, length) => {
+    if (text.length > length) {
+      text = text.substring(0,length-1);
+      const lastSpace = text.lastIndexOf(" ");
+      text = text.substring(0,lastSpace) + "...";
+    }
+    return text;
+  }
   return (
     <Card class="product-card" sx={{ maxWidth: 345 }}>
       <Link to={`/${props.item.id}`} style={{textDecoration: "none"}}>
@@ -17,13 +27,14 @@ function ProductCard(props) {
             height="140"
             image={props.item.image}
             alt={props.item.title}
+            sx={{backgroundSize: "contain", height: 200}}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div" style={{color:"black"}}>
-              {props.item.title}
+            <Typography gutterBottom variant="h5" component="div" style={{color:"black"}} sx={{height: 100}} >
+              {maxLength(props.item.title, 40)}
             </Typography>
-            <Typography variant="body2" color="text.secondary" style={{color:"black"}} sx={{height: 200}} >
-              {props.item.description}
+            <Typography variant="body2" color="text.secondary" style={{color:"black"}} md={{height: 10}} sx={{fontWeight: 'bold', fontSize: 20}}>
+              ${props.item.price}
             </Typography>
           </CardContent>
         </CardActionArea>

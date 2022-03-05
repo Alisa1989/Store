@@ -27,11 +27,13 @@ function ProductList(props) {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} >
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 2, sm: 8, md: 18 }}
+        alignItems="center"
+        justifyContent="center"
       >
         {(props.products.filteredItems.length
           ? props.products.filteredItems
