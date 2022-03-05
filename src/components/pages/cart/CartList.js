@@ -32,6 +32,8 @@ const CartList = (props) => {
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 2, sm: 8, md: 18 }}
+            alignItems="center"
+            justifyContent="center"
           >
             {props.cart.cart.items.map((item) => (
               <Grid item xs={2} sm={4} md={4} key={item.id} >
