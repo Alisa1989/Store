@@ -6,6 +6,9 @@ import CartContainer from "./components/pages/cart/CartContainer";
 import Header from "./components/common/Header";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { ProductContainer } from "./components/pages/productPage";
+import LoginContainer from "./components/pages/customerLogin/LoginContainer";
+import Login from "./components/pages/customerLogin/Login";
+import SignUp from "./components/pages/customerLogin/SignUp";
 
 function App() {
   return (
@@ -14,9 +17,13 @@ function App() {
         <header className="App-header">
           <Header />
           <Routes>
-          <Route path="/:id" element={<ProductContainer />} />
-          <Route exact path="/" element={<LandingContainer />} />
-          <Route exact path="/cart" element={<CartContainer />} />            
+          <Route path=":id" element={<ProductContainer />} />
+          <Route exact path="" element={<LandingContainer />} />
+          <Route exact path="cart" element={<CartContainer />} />            
+          <Route exact path="customerLogin" element={<LoginContainer />} >            
+            <Route exact path="login" element={<Login />} />            
+            <Route exact path="signup" element={<SignUp />} />
+          </Route>            
           </Routes>
         </header>
       </div>

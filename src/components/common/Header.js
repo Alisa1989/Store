@@ -103,6 +103,14 @@ function Header(props) {
           >
             <Link className="header-links" to={`/`}>Store64</Link>
           </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            <Link className="header-links" to={`/customerLogin/login`}>login</Link>
+          </Typography>
           <Link className="header-links link-to-cart" to="/cart">
             Go to Cart
             <IconButton
