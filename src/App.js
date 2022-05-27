@@ -6,6 +6,7 @@ import CartContainer from "./components/pages/cart/CartContainer";
 import Header from "./components/common/Header";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { ProductContainer } from "./components/pages/productPage";
+import LoginContainer from "./components/pages/customerLogin/LoginContainer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/:id" element={<ProductContainer />} />
           <Route exact path="/" element={<LandingContainer />} />
           <Route exact path="/cart" element={<CartContainer />} />            
+          <Route exact path="/login" element={<LoginContainer />} />            
           </Routes>
         </header>
       </div>
