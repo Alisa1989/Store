@@ -109,7 +109,7 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link className="header-links" to={`/login`}>login</Link>
+            <Link className="header-links" to={`/customerLogin/login`}>login</Link>
           </Typography>
           <Link className="header-links link-to-cart" to="/cart">
             Go to Cart

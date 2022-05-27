@@ -1,12 +1,14 @@
 import Login from "./Login"
-import SignUp from "./SignUp"
+import { Routes, Route, Link, Outlet } from "react-router-dom";
+
 
 const LoginContainer = () => {
     return(
         <>
-        <h1>gabagool</h1>
-        <Login/>
-        <SignUp/>
+        <h1>Sign Up or Log In!</h1>
+        <Link to="signup">Sign Up</Link>
+        <Link to="login">Login</Link>
+        <Outlet />
         </>
     )
 }
