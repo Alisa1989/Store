@@ -6,7 +6,6 @@ import Grid from "@mui/material/Grid";
 import { connect } from "react-redux";
 import ProductCard from "../../common/ProductCard";
 import { addProduct } from "../../../state/actions/cartActions";
-import { Link } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,

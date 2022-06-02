@@ -8,7 +8,7 @@ export const FILTER_PRODUCTS = 'FILTER_PRODUCTS'
 export const getProducts = () => (dispatch) => {
     dispatch({type: GET_PRODUCTS_START});
     axios
-        .get ('https://fakestoreapi.com/products')
+        .get ('http://localhost:4000/products')
         .then((response)=> {
             dispatch({ type: GET_PRODUCTS_SUCCESS, payload: response.data});
             // console.log("API response", response.data);
