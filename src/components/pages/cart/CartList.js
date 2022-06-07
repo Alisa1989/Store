@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useEffect } from "react";
 
 import ProductCard from "../../common/ProductCard";
 import {removeProduct} from '../../../state/actions/cartActions'
+import { getCart } from "../../../state/actions/cartActions";
 
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -17,7 +18,14 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
   }));
 
+
 const CartList = (props) => {
+  console.log("cart list props", props)
+
+  // useEffect(() => {
+  //   props.getCart(1);
+  // }, []);
+
     return (
         <>
         <div>
@@ -51,12 +59,15 @@ const CartList = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-      cart: state.cart
+      cart: state.cart,
+      customer: state.customer,
+      product: state.product
     };
   };
 
 const mapDispatchToProps = {
-removeProduct
+  removeProduct,
+  getCart
 };
   
   

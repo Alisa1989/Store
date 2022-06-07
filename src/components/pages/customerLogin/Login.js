@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { connect } from "react-redux";
+import { addCustomer } from "./../../../state/actions/customerActions";
+import { getCart } from "../../../state/actions/cartActions";
 
-const Login = () => {
+const Login = (props) => {
   const [formState, setFormState] = useState({
-    email: "",
-    password: ""
+    email: "JD92@yahoo.com",
+    password: "password"
   });
 
   const [errors, setErrors] = useState({
@@ -28,19 +31,21 @@ const Login = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 //   const [post, setPost] = useState([]);
 
-  const formSubmit = (e) => {
+  const login = (e) => {
     e.preventDefault();
-    console.log("form submitted!");
-    axios.post("http://localhost:4000/login", formState)
-    // .then(res => {setPost(res.data);
-    .then(res => {console.log(res.data);
-    setFormState({
-        email: "",
-        password: ""
+    axios
+      .post("http://localhost:4000/customers/login", formState)
+      // .then(res => {setPost(res.data);
+      .then((res) => {
+        props.getCart(res.data.customer.id);
+        props.addCustomer(res.data.customer);
+        setFormState({
+            email: "",
+            password: "",
+        });
     })
-})
     .catch((err) => console.log(err.response));
-  };
+};
 
   const inputChange = (e) => {
     e.persist();
@@ -68,7 +73,7 @@ const Login = () => {
   }, [formState, formSchema]);
 
   return (
-    <form onSubmit={formSubmit}>
+    <form onSubmit={login}>
       <h1> Log In </h1>
       <label htmlFor="email">
         email
@@ -103,5 +108,18 @@ const Login = () => {
     </form>
   );
 };
-};
-export default Login;
+
+
+
+const mapStateToProps = (state) => {
+    return {
+      state: state,
+    };
+  };
+  
+  const mapDispatchToProps = {
+    addCustomer,
+    getCart
+  };
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

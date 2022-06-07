@@ -1,6 +1,8 @@
-import { ADD_TO_CART, SUBTRACT_FROM_CART } from "../actions/cartActions";
+import { ADD_TO_CART, SUBTRACT_FROM_CART, GET_CART_START, GET_CART_SUCCESS, GET_CART_FAILURE } from "../actions/cartActions";
 
 export const initialState = {
+  fetchingCart: false,
+  error: "",
   cart: {
     total: 0,
     items: [],
@@ -25,6 +27,20 @@ const removeOneItem = (items, payloadId) => {
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_CART_START:
+        return {...state, 
+        fetchingCart: true};
+    case GET_CART_SUCCESS:
+        return {...state, 
+        fetchingCart: false,
+        cart: {
+          items: action.payload || [],
+        }
+      };
+    case GET_CART_FAILURE:
+        return {...state, 
+        fetchingCart: false,
+        error: action.payload || []};
     case ADD_TO_CART:
       return {
         ...state,
