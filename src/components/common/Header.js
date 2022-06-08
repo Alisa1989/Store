@@ -14,7 +14,10 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterProducts } from "../../state/actions/productsActions";
-import MenuListComposition from "./Menu";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
+import CartContainer from "../pages/cart/CartContainer";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,6 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+//The CartIcon is changed when something gets added to the cart
 function Header(props) {
   const [cartIcon, setCartIcon] = useState(false);
 
@@ -76,8 +80,18 @@ function Header(props) {
     }
   };
 
+  //filtering products
   const filterFunction = (event) => {
     props.filterProducts(event.target.value);
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -90,10 +104,28 @@ function Header(props) {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={handleClick}
           >
-            <MenuIcon>
-              <MenuListComposition/>
-            </MenuIcon>
+            <MenuIcon
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+            ></MenuIcon>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleClose} component="a" href="cart">Cart</MenuItem>
+              <MenuItem onClick={handleClose} component="a" href="customerLogin">Login</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={handleClose}>Seller Login</MenuItem>
+            </Menu>
           </IconButton>
           <Typography
             variant="h6"
@@ -101,7 +133,9 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link className="header-links" to={`/`}>Store64</Link>
+            <Link className="header-links" to={`/`}>
+              Store64
+            </Link>
           </Typography>
           <Typography
             variant="h6"
@@ -109,7 +143,9 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link className="header-links" to={`/customerLogin/login`}>login</Link>
+            <Link className="header-links" to={`/customerLogin/login`}>
+              login
+            </Link>
           </Typography>
           <Link className="header-links link-to-cart" to="/cart">
             Go to Cart
