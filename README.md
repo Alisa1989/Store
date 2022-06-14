@@ -46,3 +46,6 @@ $ Clone Repo [copy text="repo" content="https://github.com/Alisa1989/Store64-bac
 $ npm install
 $ npm start
 ```
+
+# License
+[MIT](https://github.com/Alisa1989/Store64/blob/main/LICENSE) Alexandre Steinhauslin
