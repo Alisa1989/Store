@@ -32,7 +32,7 @@
 ## Database
 - SQLite 5.0
 
-# Getting Started
+# Setup
 To run this project, install it locally using npm.
 For the Front-End
 ```
