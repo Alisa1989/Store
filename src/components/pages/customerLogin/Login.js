@@ -33,10 +33,12 @@ const Login = (props) => {
 
   const login = (e) => {
     e.preventDefault();
+    
     axios
-      .post("http://localhost:4000/customers/login", formState)
+      .post("https://store64-backend.herokuapp.com/customers/login",  formState, {withCredentials: true})
       // .then(res => {setPost(res.data);
       .then((res) => {
+        console.log(res.data.message);
         props.getCart(res.data.customer.id);
         props.addCustomer(res.data.customer);
         setFormState({
@@ -49,7 +51,7 @@ const Login = (props) => {
 
   const inputChange = (e) => {
     e.persist();
-    // console.log("input changed!", e.target.value);
+    console.log("input changed!", e.target.value);
     const newFormData = {
       ...formState,
       [e.target.name]: e.target.value,
