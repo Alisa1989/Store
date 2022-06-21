@@ -1,6 +1,6 @@
 // import './App.css';
 
-import React from "react";
+import React, { useEffect } from "react";
 import LandingContainer from "./components/pages/landing/LandingContainer";
 import CartContainer from "./components/pages/cart/CartContainer";
 import Header from "./components/common/Header";
@@ -11,6 +11,10 @@ import Login from "./components/pages/customerLogin/Login";
 import SignUp from "./components/pages/customerLogin/SignUp";
 
 function App() {
+  useEffect(()=>{
+    // TODO: Call getCart with the ID from the cookies (if there is one)
+  }, []);
+
   return (
     <Router>
       <div className="App">
