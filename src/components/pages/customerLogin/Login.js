@@ -35,7 +35,7 @@ const Login = (props) => {
     e.preventDefault();
     
     axios
-      .post("https://store64-backend.herokuapp.com/customers/login",  formState, {withCredentials: true})
+      .post("http://localhost:4000/customers/login",  formState, {withCredentials: true})
       // .then(res => {setPost(res.data);
       .then((res) => {
         console.log(res.data.message);
