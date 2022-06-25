@@ -1,6 +1,7 @@
 // import './App.css';
 
 import React, { useEffect } from "react";
+import React from "react";
 import LandingContainer from "./components/pages/landing/LandingContainer";
 import CartContainer from "./components/pages/cart/CartContainer";
 import Header from "./components/common/Header";
@@ -9,6 +10,7 @@ import { ProductContainer } from "./components/pages/productPage";
 import LoginContainer from "./components/pages/customerLogin/LoginContainer";
 import Login from "./components/pages/customerLogin/Login";
 import SignUp from "./components/pages/customerLogin/SignUp";
+
 import { connect } from "react-redux";
 
 import { getCart } from "./state/actions/cartActions";
@@ -48,6 +50,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
+
   getCart
 };
 
