@@ -26,6 +26,14 @@ const CartList = (props) => {
   //   props.getCart(1);
   // }, []);
 
+  
+    if (!sessionStorage.getItem("token")) {
+      return <p>Must login first</p>
+    }
+    if (props.cart.cart.items.length == 0) {
+      return <p>Go to the store to add something to the cart</p>
+    }
+
     return (
         <>
         <div>
@@ -34,7 +42,7 @@ const CartList = (props) => {
                 Total Price: {props.cart.cart.total}
             </p>
         </div>
-    
+
         <Box sx={{ flexGrow: 1 }}>
           <Grid
             container

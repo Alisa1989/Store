@@ -34,19 +34,20 @@ const Login = (props) => {
 
   const login = (e) => {
     e.preventDefault();
-    
+
     axios
-      .post("http://localhost:4000/customers/login",  formState, {withCredentials: true})
-      // .then(res => {setPost(res.data);
+    .post("http://localhost:4000/customers/login",  formState, {withCredentials: true})
+    // .then(res => {setPost(res.data);
       .then((res) => {
+
         console.log(res.data);
+
         let jwt = res.data.token
-        let decodedToken = jwt_decode(jwt);
-
-        console.log("customerID", decodedToken.customerID)
-        //session storage for ID gets set here and used in App
+        var decodedToken = jwt_decode(jwt);
+        
         sessionStorage.setItem('customerID', decodedToken.customerID);
-
+        sessionStorage.setItem('token', jwt);
+        props.getCart(sessionStorage.getItem("customerID"));
         // props.addCustomer(res.data.customer);
         setFormState({
             email: "",
