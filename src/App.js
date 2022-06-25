@@ -9,10 +9,14 @@ import { ProductContainer } from "./components/pages/productPage";
 import LoginContainer from "./components/pages/customerLogin/LoginContainer";
 import Login from "./components/pages/customerLogin/Login";
 import SignUp from "./components/pages/customerLogin/SignUp";
+import { connect } from "react-redux";
 
-function App() {
+import { getCart } from "./state/actions/cartActions";
+
+function App(props) {
   useEffect(()=>{
-    // TODO: Call getCart with the ID from the cookies (if there is one)
+    //Call getCart with the ID from the cookies (if there is one)
+    props.getCart(sessionStorage.getItem("customerID"));
   }, []);
 
   return (
@@ -35,4 +39,17 @@ function App() {
   );
 }
 
-export default App;
+
+
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = {
+  getCart
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default App;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
 import { addCustomer } from "./../../../state/actions/customerActions";
 import { getCart } from "../../../state/actions/cartActions";
@@ -38,9 +39,15 @@ const Login = (props) => {
       .post("http://localhost:4000/customers/login",  formState, {withCredentials: true})
       // .then(res => {setPost(res.data);
       .then((res) => {
-        console.log(res.data.message);
-        props.getCart(res.data.customer.id);
-        props.addCustomer(res.data.customer);
+        console.log(res.data);
+        let jwt = res.data.token
+        let decodedToken = jwt_decode(jwt);
+
+        console.log("customerID", decodedToken.customerID)
+        //session storage for ID gets set here and used in App
+        sessionStorage.setItem('customerID', decodedToken.customerID);
+
+        // props.addCustomer(res.data.customer);
         setFormState({
             email: "",
             password: "",
