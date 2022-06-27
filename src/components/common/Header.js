@@ -17,8 +17,6 @@ import { filterProducts } from "../../state/actions/productsActions";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-import CartContainer from "../pages/cart/CartContainer";
-
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
