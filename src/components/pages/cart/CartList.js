@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useEffect } from "react";
 
 import ProductCard from "../../common/ProductCard";
 import {removeProduct} from '../../../state/actions/cartActions'
@@ -22,15 +21,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const CartList = (props) => {
   console.log("cart list props", props)
 
-  // useEffect(() => {
-  //   props.getCart(1);
-  // }, []);
-
-  
     if (!sessionStorage.getItem("token")) {
       return <p>Must login first</p>
     }
-    if (props.cart.cart.items.length == 0) {
+    if (props.cart.cart.items.length === 0) {
       return <p>Go to the store to add something to the cart</p>
     }
 
