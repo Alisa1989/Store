@@ -7,6 +7,8 @@
 
 # General Info
   Store64 is an E-Commerce platform for customers and sellers. Customers are able to browse items, add them to the cart and modify their order while sellers are able to create, modify and delete inventory. 
+  
+  Here is the deployed [website](https://store-a4oqus5y1-alex-developer.vercel.app/)
   The backend is contained in it's own [repo](https://github.com/Alisa1989/Store64-backend)
  
 # Technologies
@@ -32,7 +34,7 @@
 ## Database
 - SQLite 5.0
 
-# Getting Started
+# Setup
 To run this project, install it locally using npm.
 For the Front-End
 ```

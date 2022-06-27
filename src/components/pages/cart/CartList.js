@@ -19,7 +19,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const CartList = (props) => {
-  console.log("cart list props", props)
 
     if (!sessionStorage.getItem("token")) {
       return <p>Must login first</p>
