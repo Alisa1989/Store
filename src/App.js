@@ -1,7 +1,6 @@
 // import './App.css';
 
 import React, { useEffect } from "react";
-import React from "react";
 import LandingContainer from "./components/pages/landing/LandingContainer";
 import CartContainer from "./components/pages/cart/CartContainer";
 import Header from "./components/common/Header";

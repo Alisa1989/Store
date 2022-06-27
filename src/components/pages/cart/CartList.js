@@ -21,6 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const CartList = (props) => {
   console.log("cart list props", props)
+  console.log("session storage", sessionStorage.getItem("token"))
+  console.log("session id", document.cookie )
 
   // useEffect(() => {
   //   props.getCart(1);
