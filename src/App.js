@@ -18,7 +18,7 @@ function App(props) {
   useEffect(()=>{
     //Call getCart with the ID from the cookies (if there is one)
     props.getCart(sessionStorage.getItem("customerID"));
-  }, );
+  }, [sessionStorage.getItem("customerID")]);
 
   return (
     <Router>
