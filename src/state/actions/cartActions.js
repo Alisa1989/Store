@@ -20,9 +20,31 @@ export const getCart = (userID) => (dispatch) => {
 
 
 export const addProduct = item => {
+    axios
+        .post (`http://localhost:4000/carts/customers/products`, {
+            customerID: (sessionStorage.getItem("customerID")),
+            productID: item.id,
+            quantity: 1,
+            sellerID: 1
+        })
+        .then((res)=> {
+            console.log("was added", res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     return{type: ADD_TO_CART, payload: item}
 };
+
 export const removeProduct = item => {
+    axios
+        .delete (`http://localhost:4000/carts/customers/${sessionStorage.getItem("customerID")}/products/${item.id}`)
+        .then((res)=> {
+            console.log("was removed", res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     return{type: SUBTRACT_FROM_CART, payload: item}
 };
 
