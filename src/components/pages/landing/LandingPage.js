@@ -7,7 +7,7 @@ import ProductList from './ProductList'
 const LandingPage = (props) => {
   useEffect(() => {
     props.getProducts();
-  }, );
+  }, []);
   
   return (
     <section className='landing-page'>
