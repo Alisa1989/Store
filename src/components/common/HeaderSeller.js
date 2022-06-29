@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Outlet } from "react-router-dom";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -21,8 +23,9 @@ function Header(props) {
   };
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" color="secondary">
         <Toolbar>
           <IconButton
             size="large"
@@ -37,7 +40,7 @@ function Header(props) {
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
-            ></MenuIcon>
+              ></MenuIcon>
             <Menu
               id="basic-menu"
               anchorEl={anchorEl}
@@ -49,7 +52,7 @@ function Header(props) {
             >
               {/* <MenuItem onClick={handleClose} component="a" href="cart">Cart</MenuItem> */}
               <MenuItem onClick={handleClose}>Seller Logout</MenuItem>
-              <MenuItem onClick={handleClose}>Seller Login</MenuItem>
+              <MenuItem onClick={handleClose} component="a" href="customer">Marketplace</MenuItem>
             </Menu>
           </IconButton>
           <Typography
@@ -57,7 +60,7 @@ function Header(props) {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
+            >
             <Link className="header-links" to={`/`}>
               Store64
             </Link>
@@ -69,12 +72,14 @@ function Header(props) {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             <Link className="header-links" to={`/customerLogin/login`}>
-              login
+              Seller Login
             </Link>
           </Typography>
         </Toolbar>
       </AppBar>
     </Box>
+    <Outlet />
+  </>
   );
 }
 

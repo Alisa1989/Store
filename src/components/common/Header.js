@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Outlet } from "react-router-dom";
+
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -93,6 +95,7 @@ function Header(props) {
   };
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -119,10 +122,10 @@ function Header(props) {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleClose} component="a" href="cart">Cart</MenuItem>
-              <MenuItem onClick={handleClose} component="a" href="customerLogin">Login</MenuItem>
+              <MenuItem onClick={handleClose} component="a" href="/customer/cart">Cart</MenuItem>
+              <MenuItem onClick={handleClose} component="a" href="/customer/customerLogin/login">Login</MenuItem>
+              <MenuItem onClick={handleClose} component="a" href="../seller">Seller Dashboard</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
-              <MenuItem onClick={handleClose}>Seller Login</MenuItem>
             </Menu>
           </IconButton>
           <Typography
@@ -131,7 +134,7 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link className="header-links" to={`/`}>
+            <Link className="header-links" to={`/customer`}>
               Store64
             </Link>
           </Typography>
@@ -141,11 +144,11 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link className="header-links" to={`/customerLogin/login`}>
-              login
+            <Link className="header-links" to={`/customer/customerLogin/login`}>
+              Login or Sign Up
             </Link>
           </Typography>
-          <Link className="header-links link-to-cart" to="/cart">
+          <Link className="header-links link-to-cart" to="/customer/cart">
             Go to Cart
             <IconButton
               size="large"
@@ -165,7 +168,7 @@ function Header(props) {
               {props.cart.cart.items.length}
             </Typography>
           </Link>
-          <Link className="header-links" to={`/`}>
+          <Link className="header-links" to={`/customer`}>
             <Search onChange={filterFunction}>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -179,6 +182,8 @@ function Header(props) {
         </Toolbar>
       </AppBar>
     </Box>
+  <Outlet />
+  </>
   );
 }
 
