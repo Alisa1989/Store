@@ -32,10 +32,11 @@ const ProductForm = () => {
   };
 
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [baseImage, setBaseImage] = useState("");
 
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log("form submitted!");
+    console.log("form submitted!", formState);
     axios.post("http://localhost:4000/sellersInventory/sellers/1/products", formState)
     .then(res => {console.log(res.data);
     setFormState({
@@ -51,13 +52,43 @@ const ProductForm = () => {
 
   const inputChange = (e) => {
     e.persist();
+
+    // let files = "";
+    // const file = files[0];
+    // getBase64(file)
     // console.log("input changed!", e.target.value);
     const newFormData = {
       ...formState,
       [e.target.name]: e.target.value,
+    //  [e.target.name]: e.target.type === "image" ? files = e.target.files : e.target.value,
     };
+   
     validateChange(e);
     setFormState(newFormData);
+};
+
+const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    console.log("file", file);
+    const base64 = await getBase64(file);
+    console.log("base64",base64);
+    setBaseImage(base64);
+    formState.image = base64;
+    // formState.append ("image", base64);
+  }
+
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) =>{
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+            resolve(reader.result);
+        };
+
+        reader.onerror = (error) => {
+            reject(error);
+        }
+    });
   };
 
   const formSchema = yup.object().shape({
@@ -151,9 +182,10 @@ const ProductForm = () => {
           name="image"
           placeholder="Input image"
           accept="image/png, image/jpeg"
-          value={formState.image ?? ""}
-          onChange={inputChange}
+          onChange={(e) => {uploadImage(e)}}
+        //   onChange={inputChange}
         />
+        <img src={baseImage} height="200px"/>
         {errors.image.length > 0 ? (
           <p className="error">{errors.image}</p>
         ) : null}
