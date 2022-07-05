@@ -13,7 +13,7 @@ import LoginContainer from "./components/pages/customerLogin/LoginContainer";
 import Login from "./components/pages/customerLogin/Login";
 import SignUp from "./components/pages/customerLogin/SignUp";
 import SellerLanding from "./components/pages/seller/SellerLanding";
-
+import ProductForm from "./components/pages/seller/SellerProductForm";
 
 function App(props) {
   useEffect(() => {
@@ -37,6 +37,7 @@ function App(props) {
         <Route exact path="/" element={<Navigate to="/customer" replace />} />
         <Route path="seller" element={<HeaderSeller />}>
           <Route exact path="" element={<SellerLanding />} />
+          <Route exact path="addProduct" element={<ProductForm />} />
         </Route>
       </Routes>
     </Router>
