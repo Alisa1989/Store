@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { filterProducts } from "../../state/actions/productsActions";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { ClickAwayListener } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -86,19 +87,29 @@ function Header(props) {
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [open, setOpen] = React.useState(Boolean(anchorEl));
+
   const handleClick = (event) => {
+    setOpen((prev) => !prev);
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  const handleClickAway = () => {
+    setOpen(false);
+  };
+ 
+
   return (
     <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <div>
+
           <IconButton
             size="large"
             edge="start"
@@ -128,6 +139,8 @@ function Header(props) {
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </IconButton>
+              </div>
+          </ClickAwayListener>
           <Typography
             variant="h6"
             noWrap
