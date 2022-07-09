@@ -85,7 +85,7 @@ const SignUp = () => {
 
   return (
     <form onSubmit={formSubmit}>
-      <h1> sign up </h1>
+      <h1> Sign Up </h1>
       <label htmlFor="email">
         email
         <input
@@ -170,7 +170,7 @@ const SignUp = () => {
           <p className="error">{errors.address}</p>
         ) : null}
       </label>
-      <button disabled={buttonDisabled}>Submit</button>
+      <button className="btn btn-blue" disabled={buttonDisabled}>Submit</button>
       {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
     </form>
   );

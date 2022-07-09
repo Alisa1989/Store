@@ -29,6 +29,14 @@
   flex-direction: column;
 }
 
+.login-main {
+  text-align: center;
+}
+.login-main .login-container-links {
+  text-decoration: none;
+  margin: 5px;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -38,6 +46,7 @@ form {
 form label {
   display: inline-block;
   width: 100px;
+  height: 40px;
   padding: 5px;
 }
 form label input {
@@ -60,6 +69,11 @@ form label input {
 
 .btn-blue {
   background-color: #1976d2;
+}
+
+.btn-lightblue {
+  background-color: #42a5f5;
+  border: solid 1px black;
 }
 
 body {
