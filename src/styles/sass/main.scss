@@ -1,8 +1,11 @@
 @import "base/base";
-@import "layout/header";
+@import "components/header";
 @import "components/productCard";
 @import "pages/landing";
 @import "pages/productPage";
+@import "components/customerLogin";
+@import "components/productList";
+@import "abstracts/_mixins";
 
 $color-primary: #1976d2;
 $color-primary-light: #42a5f5;

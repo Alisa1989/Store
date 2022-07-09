@@ -113,7 +113,7 @@ const Login = (props) => {
           <p className="error">{errors.password}</p>
         ) : null}
       </label>
-      <button disabled={buttonDisabled}>Submit</button>
+      <button className="btn btn-blue" disabled={buttonDisabled}>Submit</button>
       {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
     </form>
   );
