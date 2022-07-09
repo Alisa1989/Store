@@ -133,8 +133,9 @@ function Header(props) {
                 "aria-labelledby": "basic-button",
               }}
             >
+              <MenuItem onClick={handleClose} component="a" href="/customer">Store</MenuItem>
               <MenuItem onClick={handleClose} component="a" href="/customer/cart">Cart</MenuItem>
-              <MenuItem onClick={handleClose} component="a" href="/customer/customerLogin/login">Login</MenuItem>
+              <MenuItem onClick={handleClose} component="a" href="/customer/customerLogin">Login or Sign Up</MenuItem>
               <MenuItem onClick={handleClose} component="a" href="../seller">Seller Dashboard</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
@@ -158,11 +159,11 @@ function Header(props) {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             <Link className="header-links" to={`/customer/customerLogin/login`}>
-              Login or Sign Up
+              Login/Sign Up
             </Link>
           </Typography>
           <Link className="header-links link-to-cart" to="/customer/cart">
-            Go to Cart
+            <span className="go-to-cart">Go to Cart</span>
             <IconButton
               size="large"
               edge="start"

@@ -11,6 +11,14 @@
   color: white;
 }
 
+@media (max-width: 625px) {
+  .go-to-cart {
+    display: none;
+    font-size: bold;
+    color: red;
+  }
+}
+
 .product-card {
   box-shadow: none;
 }
