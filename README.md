@@ -38,7 +38,7 @@
 To run this project, install it locally using npm.
 For the Front-End
 ```
-$ Clone Repo [copy text="repo" content="https://github.com/Alisa1989/Store64.git"]
+$ Clone Repo "https://github.com/Alisa1989/Store64.git"
 $ npm install
 $ npm start
 ```
