@@ -44,7 +44,7 @@ $ npm start
 ```
 For the Back-End
 ```
-$ Clone Repo [copy text="repo" content="https://github.com/Alisa1989/Store64-backend.git"]
+$ Clone Repo "https://github.com/Alisa1989/Store64-backend.git"
 $ npm install
 $ npm start
 ```
