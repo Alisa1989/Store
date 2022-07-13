@@ -10,3 +10,11 @@
     text-decoration: none;
     color: white;
 }
+
+.go-to-cart {
+    @media (max-width: 625px) {
+        display: none;
+        font-size: bold;
+        color: red;
+    }
+}
