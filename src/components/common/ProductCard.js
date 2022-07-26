@@ -20,7 +20,7 @@ function ProductCard(props) {
   }
   return (
     <Card className="product-card" sx={{ maxWidth: 345}}>
-      <Link to={`/${props.item.id}`} style={{textDecoration: "none"}}>
+      <Link to={`/customer/product${props.item.id}`} style={{textDecoration: "none"}}>
         <CardActionArea>
           <CardMedia
             component="img"

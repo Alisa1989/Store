@@ -26,7 +26,7 @@ function App(props) {
       <Routes>
         <Route path="*" element={<Navigate to="customer" replace />} />
         <Route path="customer" element={<Header />}>
-          <Route path=":id" element={<ProductContainer />} />
+          <Route path="product:id" element={<ProductContainer />} />
           <Route exact path="cart" element={<CartContainer />} />
           <Route exact path="customerLogin" element={<LoginContainer />}>
             <Route exact path="login" element={<Login />} />
