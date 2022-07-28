@@ -39,7 +39,7 @@ function ProductList(props) {
           : props.products.products
         ).map((_, index) => (
           <Grid item xs={2} sm={4} md={4} key={index} >
-              <Item style={{backgroundColor: 'azure', padding: 0}} >
+              <Item style={{display: "flex", justifyContent: "center"}} >
                 <ProductCard
                   item={_}
                   key={_.id}

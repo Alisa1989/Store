@@ -19,16 +19,18 @@ function ProductCard(props) {
     return text;
   }
   return (
-    <Card className="product-card" sx={{ maxWidth: 345}}>
+    <Card className="product-card" sx={{ maxWidth: 345}} style={{border: "none", boxShadow: "none"}}>
       <Link to={`/customer/product${props.item.id}`} style={{textDecoration: "none"}}>
         <CardActionArea>
+          <div style={{display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center"}}>
           <CardMedia
             component="img"
             height="140"
             image={props.item.image}
             alt={props.item.title}
-            sx={{backgroundSize: "contain", height: 200}}
-          />
+            sx={{backgroundSize: "contain", height: 200, width:"auto"}}
+            />
+          </div>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" style={{color:"black"}} sx={{height: 100}} >
               {maxLength(props.item.title, 40)}
