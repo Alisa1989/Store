@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -50,6 +53,7 @@ const SignUp = () => {
         dateOfBirth: "",
         address: "",
     })
+    navigate("/customer/customerLogin/login");
 })
     .catch((err) => console.log(err.response));
   };
