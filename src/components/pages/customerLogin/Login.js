@@ -5,12 +5,15 @@ import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
 import { addCustomer } from "./../../../state/actions/customerActions";
 import { getCart } from "../../../state/actions/cartActions";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({
     email: "JD92@yahoo.com",
     password: "password"
   });
+
+const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     email: "",
@@ -53,6 +56,7 @@ const Login = (props) => {
             email: "",
             password: "",
         });
+        navigate("/customer");
     })
     .catch((err) => console.log(err.response));
 };
