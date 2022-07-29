@@ -49,7 +49,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 }
 form label {
   display: inline-block;
@@ -65,6 +65,8 @@ form .error {
   color: red;
   font-weight: bold;
   width: 350px;
+  position: relative;
+  top: -15px;
 }
 
 .product-grid .center {
