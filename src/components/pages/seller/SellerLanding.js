@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../axios-instance";
 import { Link } from "react-router-dom";
 
 import { experimentalStyled as styled } from "@mui/material/styles";
@@ -22,8 +22,7 @@ const SellerLanding = () => {
 
   useEffect(() => {
     axios
-      // .get(`http://localhost:4000/sellers/1/products`)
-      .get(`https://store64-backend.herokuapp.com/sellers/1/products`)
+      .get(`sellers/1/products`)
       .then((response) => {
         setProducts(response.data);
       })

@@ -38,8 +38,8 @@ function ProductList(props) {
           ? props.products.filteredItems
           : props.products.products
         ).map((_, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index} >
-              <Item style={{backgroundColor: 'azure', padding: 0}} >
+          <Grid item xs={6} sm={4} md={3} key={index} >
+              <Item style={{display: "flex", justifyContent: "center"}} >
                 <ProductCard
                   item={_}
                   key={_.id}

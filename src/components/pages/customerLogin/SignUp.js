@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
+import axios from "../../../axios-instance";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -39,8 +42,7 @@ const SignUp = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted!");
-    // axios.post("http://localhost:4000/customers", formState)
-    axios.post("https://store64-backend.herokuapp.com/customers", formState)
+    axios.post("customers", formState)
     // .then(res => {setPost(res.data);
     .then(res => {console.log(res.data);
     setFormState({
@@ -51,6 +53,7 @@ const SignUp = () => {
         dateOfBirth: "",
         address: "",
     })
+    navigate("/customer/customerLogin/login");
 })
     .catch((err) => console.log(err.response));
   };

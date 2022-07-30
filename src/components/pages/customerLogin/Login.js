@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
+import axios from "../../../axios-instance";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
 import { addCustomer } from "./../../../state/actions/customerActions";
 import { getCart } from "../../../state/actions/cartActions";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({
     email: "JD92@yahoo.com",
     password: "password"
   });
+
+const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     email: "",
@@ -36,8 +39,7 @@ const Login = (props) => {
     e.preventDefault();
 
     axios
-    // .post("http://localhost:4000/customers/login",  formState, {withCredentials: true})
-    .post("https://store64-backend.herokuapp.com/customers/login",  formState, {withCredentials: true})
+    .post("customers/login",  formState, {withCredentials: true})
     // .then(res => {setPost(res.data);
       .then((res) => {
 
@@ -54,6 +56,7 @@ const Login = (props) => {
             email: "",
             password: "",
         });
+        navigate("/customer");
     })
     .catch((err) => console.log(err.response));
 };

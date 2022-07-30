@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
+import axios from "../../../axios-instance";
 
 const ProductForm = () => {
   const [formState, setFormState] = useState({
@@ -37,8 +37,7 @@ const ProductForm = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted!", formState);
-    // axios.post("http://localhost:4000/sellersInventory/sellers/1/products", formState)
-    axios.post("https://store64-backend.herokuapp.com/sellersInventory/sellers/1/products", formState)
+    axios.post("sellersInventory/sellers/1/products", formState)
     .then(res => {console.log(res.data);
     setFormState({
         title: "",
