@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
+import axios from "../../../axios-instance";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
 import { addCustomer } from "./../../../state/actions/customerActions";
@@ -39,7 +39,7 @@ const navigate = useNavigate();
     e.preventDefault();
 
     axios
-    .post("http://localhost:4000/customers/login",  formState, {withCredentials: true})
+    .post("customers/login",  formState, {withCredentials: true})
     // .then(res => {setPost(res.data);
       .then((res) => {
 
