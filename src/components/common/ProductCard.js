@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { Link } from "react-router-dom";
+import { serverURL } from "../../constants";
 
 function ProductCard(props) {
   return (
@@ -16,7 +17,7 @@ function ProductCard(props) {
           <CardMedia
             component="img"
             height="140"
-            image={props.item.image}
+            image={`${serverURL}${props.item.image}`}
             alt={props.item.title}
             sx={{backgroundSize: "contain", height: 200, width:"auto"}}
             />
