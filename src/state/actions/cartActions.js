@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axios-instance";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const SUBTRACT_FROM_CART = "SUBTRACT_FROM_CART";
@@ -9,7 +9,7 @@ export const GET_CART_FAILURE = "GET_CART_FAILURE"
 export const getCart = (userID) => (dispatch) => {
     dispatch({type: GET_CART_START});
     axios
-        .get (`http://localhost:4000/carts/customers/${userID}`)
+        .get (`carts/customers/${userID}`)
         .then((response)=> {
             dispatch({ type: GET_CART_SUCCESS, payload: response.data});
         })
@@ -21,7 +21,7 @@ export const getCart = (userID) => (dispatch) => {
 
 export const addProduct = item => {
     axios
-        .post (`http://localhost:4000/carts/customers/products`, {
+        .post (`carts/customers/products`, {
             customerID: (sessionStorage.getItem("customerID")),
             productID: item.id,
             quantity: 1,
@@ -38,7 +38,7 @@ export const addProduct = item => {
 
 export const removeProduct = item => {
     axios
-        .delete (`http://localhost:4000/carts/customers/${sessionStorage.getItem("customerID")}/products/${item.id}`)
+        .delete (`carts/customers/${sessionStorage.getItem("customerID")}/products/${item.id}`)
         .then((res)=> {
             console.log("was removed", res)
         })

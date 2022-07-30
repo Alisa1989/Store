@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axios-instance";
 
 export const GET_PRODUCTS_START = 'GET_POSTS_START';
 export const GET_PRODUCTS_SUCCESS = ' GET_PRODUCTS_SUCCESS';
@@ -8,7 +8,7 @@ export const FILTER_PRODUCTS = 'FILTER_PRODUCTS'
 export const getProducts = () => (dispatch) => {
     dispatch({type: GET_PRODUCTS_START});
     axios
-        .get ('http://localhost:4000/products')
+        .get ('products')
         .then((response)=> {
             dispatch({ type: GET_PRODUCTS_SUCCESS, payload: response.data});
             console.log("API response", response.data);
