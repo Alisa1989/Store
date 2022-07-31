@@ -17,7 +17,7 @@ function ProductCard(props) {
           <CardMedia
             component="img"
             height="140"
-            image={`${serverURL}${props.item.image}`}
+            image={`${serverURL}/${props.item.image}`}
             alt={props.item.title}
             sx={{backgroundSize: "contain", height: 200, width:"auto"}}
             />
