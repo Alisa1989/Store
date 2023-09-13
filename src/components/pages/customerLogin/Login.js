@@ -39,7 +39,7 @@ const navigate = useNavigate();
     e.preventDefault();
 
     axios
-    .post("customers/login",  formState, {withCredentials: true})
+    .post("customers/login",  formState)
     // .then(res => {setPost(res.data);
       .then((res) => {
 
@@ -58,7 +58,9 @@ const navigate = useNavigate();
         });
         navigate("/customer");
     })
-    .catch((err) => console.log(err.response));
+    .catch((err) => {
+      console.log('login error', err)
+    });
 };
 
   const inputChange = (e) => {
