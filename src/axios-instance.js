@@ -3,6 +3,6 @@ import { serverURL } from "./constants";
 
 const instance = axios.create({
     baseURL: serverURL,
-    timeout: 1000
+    timeout: 1000 * 30
   });
   export default instance;
