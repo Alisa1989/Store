@@ -58,7 +58,9 @@ const navigate = useNavigate();
         });
         navigate("/customer");
     })
-    .catch((err) => console.log(err.response));
+    .catch((err) => {
+      console.log('login error', err)
+    });
 };
 
   const inputChange = (e) => {
